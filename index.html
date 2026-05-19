@@ -108,8 +108,46 @@
               </article>
             </div>
           </div>
-          <figure class="figure-frame compact">
-            <img src="assets/llm_captioning.png" alt="LLM captioning and condition construction workflow" loading="lazy" />
+          <figure class="figure-frame compact caption-figure">
+            <div class="caption-pipeline" aria-label="Time series caption construction workflow">
+              <article class="pipeline-panel series-panel">
+                <h3>Time Series</h3>
+                <svg class="series-sketch" viewBox="0 0 260 150" role="img" aria-label="Example time series curve">
+                  <path class="axis" d="M28 122H238M28 18V122" />
+                  <path class="gridline" d="M28 88H238M28 54H238M80 18V122M132 18V122M184 18V122" />
+                  <path
+                    class="series-line"
+                    d="M30 85 C44 88 47 108 60 103 C76 96 83 71 96 78 C110 86 105 33 121 30 C140 27 133 91 150 94 C166 97 163 121 179 116 C194 110 190 70 205 73 C223 78 225 102 238 88"
+                  />
+                </svg>
+                <p class="series-vector">[5.827, 5.761, ...] in R^L</p>
+              </article>
+
+              <div class="pipeline-arrow labelled" aria-hidden="true">
+                <span>round + structure</span>
+              </div>
+
+              <article class="pipeline-panel json-panel">
+                <h3>JSON Structure</h3>
+                <pre><code>{
+  "value": [5.827, 5.761, ...],
+  "length": L
+}</code></pre>
+                <div class="prompt-flow">
+                  <span class="prompt-chip">Prompt</span>
+                  <span class="llm-chip">LLM API</span>
+                </div>
+              </article>
+
+              <div class="pipeline-arrow" aria-hidden="true"></div>
+
+              <article class="pipeline-panel caption-panel">
+                <h3>Caption</h3>
+                <p>
+                  A downward trend with significant volatility, followed by a sharp trough and irregular fluctuations.
+                </p>
+              </article>
+            </div>
           </figure>
         </div>
       </section>
