@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Layered time-series curves">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#082e36"/>
+      <stop offset="0.52" stop-color="#0c4850"/>
+      <stop offset="1" stop-color="#eef5f4"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.05"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#001b22" flood-opacity="0.24"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <path d="M0 705 C220 632 350 736 555 650 C760 565 850 430 1048 470 C1254 512 1354 380 1600 418 L1600 900 L0 900 Z" fill="#ffffff" opacity="0.08"/>
+  <path d="M0 185 C195 248 338 152 540 204 C736 254 864 182 1058 142 C1270 98 1424 150 1600 74" fill="none" stroke="#a8fff1" stroke-width="3" opacity="0.18"/>
+
+  <g transform="translate(760 130)" opacity="0.96" filter="url(#softShadow)">
+    <rect x="0" y="0" width="690" height="430" rx="24" fill="url(#panel)" stroke="#e5fbf7" stroke-opacity="0.34"/>
+    <g stroke="#d7f1ef" stroke-opacity="0.18" stroke-width="1">
+      <path d="M55 70 H635"/>
+      <path d="M55 140 H635"/>
+      <path d="M55 210 H635"/>
+      <path d="M55 280 H635"/>
+      <path d="M55 350 H635"/>
+      <path d="M135 45 V375"/>
+      <path d="M235 45 V375"/>
+      <path d="M335 45 V375"/>
+      <path d="M435 45 V375"/>
+      <path d="M535 45 V375"/>
+    </g>
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M55 304 C90 284 100 258 128 260 C164 262 166 320 205 315 C250 308 252 190 296 186 C335 182 352 250 392 245 C438 239 450 120 492 122 C538 125 544 248 592 244 C614 242 622 224 635 210" stroke="#9cf7e8" stroke-width="8"/>
+      <path d="M55 250 C96 230 126 226 158 238 C196 252 217 214 247 205 C294 190 313 236 356 228 C398 220 408 164 452 158 C502 150 532 190 566 178 C598 167 608 132 635 120" stroke="#ffd084" stroke-width="5" opacity="0.92"/>
+      <path d="M55 340 C110 348 140 326 185 332 C246 340 272 286 318 298 C374 312 410 330 458 296 C507 260 563 286 635 254" stroke="#d5ecff" stroke-width="4" opacity="0.76"/>
+    </g>
+  </g>
+
+  <g transform="translate(1080 610)" opacity="0.85">
+    <rect x="0" y="0" width="250" height="62" rx="31" fill="#ffffff" fill-opacity="0.14" stroke="#e6fbf7" stroke-opacity="0.32"/>
+    <circle cx="38" cy="31" r="10" fill="#9cf7e8"/>
+    <path d="M68 31 H218" stroke="#e6fbf7" stroke-opacity="0.55" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(1160 700)" opacity="0.64">
+    <rect x="0" y="0" width="190" height="48" rx="24" fill="#ffffff" fill-opacity="0.12" stroke="#e6fbf7" stroke-opacity="0.24"/>
+    <circle cx="30" cy="24" r="8" fill="#ffd084"/>
+    <path d="M54 24 H158" stroke="#e6fbf7" stroke-opacity="0.42" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ConTSG-Bench: A Unified Benchmark for Conditional Time Series Generation</title>
+    <meta
+      name="description"
+      content="ConTSG-Bench is a unified benchmark for conditional time series generation across condition modalities, semantic abstraction levels, and evaluation dimensions."
+    />
+    <link rel="stylesheet" href="assets/site.css" />
+  </head>
+  <body>
+    <header class="hero" id="top">
+      <nav class="topbar" aria-label="Primary navigation">
+        <a class="brand" href="#top">ConTSG-Bench</a>
+        <div class="nav-links">
+          <a href="#framework">Framework</a>
+          <a href="#comparison">Comparison</a>
+          <a href="#results">Results</a>
+          <a href="#analyses">Analyses</a>
+          <a href="#citation">Citation</a>
+        </div>
+      </nav>
+
+      <div class="container hero-content">
+        <p class="eyebrow">ICML 2026 · Conditional Time Series Generation</p>
+        <h1>ConTSG-Bench: A Unified Benchmark for Conditional Time Series Generation</h1>
+        <p class="subtitle">
+          A systematic benchmark for evaluating whether generative models can produce realistic time series that
+          faithfully follow labels, structured attributes, and natural-language conditions.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="https://github.com/seqml/ConTSG-Bench">GitHub</a>
+          <a class="btn" href="assets/contsg-bench-paper.pdf">Paper PDF</a>
+          <a class="btn hf" href="https://huggingface.co/spaces/mldi-lab/ConTSG-Bench-Leaderboard">HF Space</a>
+          <a class="btn hf" href="https://huggingface.co/datasets/mldi-lab/ConTSG-Bench-Datasets">HF Dataset</a>
+          <a class="btn hf" href="https://huggingface.co/mldi-lab/ConTSG-Bench-Checkpoints">HF Checkpoints</a>
+          <a class="btn" href="#results">View Results</a>
+          <a class="btn" href="#analyses">Analysis Panels</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="framework">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Framework Overview</p>
+            <h2>Three condition modalities, two semantic levels, one unified protocol.</h2>
+            <p>
+              ConTSG-Bench aligns class labels, structured attributes, and text descriptions for time series from
+              healthcare, meteorology, energy, traffic, network telemetry, and synthetic domains.
+            </p>
+          </div>
+
+          <div class="stat-grid" aria-label="Benchmark summary">
+            <article class="stat">
+              <strong>8</strong>
+              <span>diverse datasets</span>
+            </article>
+            <article class="stat">
+              <strong>11</strong>
+              <span>representative models</span>
+            </article>
+            <article class="stat">
+              <strong>3</strong>
+              <span>condition modalities</span>
+            </article>
+            <article class="stat">
+              <strong>5</strong>
+              <span>evaluation dimensions</span>
+            </article>
+          </div>
+
+          <figure class="figure-frame overview-figure">
+            <img src="assets/task_condition.png" alt="Condition modality and semantic abstraction taxonomy for ConTSG-Bench" />
+            <figcaption>
+              ConTSG-Bench spans label, attribute, and text conditions while separating morphological descriptions
+              from conceptual descriptions.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section alt" id="pipeline">
+        <div class="container split">
+          <div>
+            <p class="eyebrow">Data Alignment</p>
+            <h2>Aligned multimodal conditions for conditional generation.</h2>
+            <p>
+              The benchmark builds a shared condition space around each time series. Existing domain labels are
+              preserved where available, structured attributes expose controllable factors, and textual descriptions
+              make model behavior comparable under natural-language conditions.
+            </p>
+            <div class="mini-grid">
+              <article class="mini-card">
+                <h3>Labels</h3>
+                <p>Discrete classes for label-conditioned generators and downstream utility tests.</p>
+              </article>
+              <article class="mini-card">
+                <h3>Attributes</h3>
+                <p>Structured control variables for compositional and counterfactual settings.</p>
+              </article>
+              <article class="mini-card">
+                <h3>Text</h3>
+                <p>Morphological and conceptual descriptions for semantic alignment evaluation.</p>
+              </article>
+            </div>
+          </div>
+          <figure class="figure-frame compact">
+            <img src="assets/llm_captioning.png" alt="LLM captioning and condition construction workflow" loading="lazy" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" id="comparison">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Benchmark Comparison</p>
+            <h2>Coverage across modalities, semantics, and evaluation dimensions.</h2>
+            <p>
+              Prior work usually covers a narrow conditioning setting. ConTSG-Bench is designed to evaluate
+              fidelity, condition adherence, fine-grained control, compositional generalization, and downstream utility
+              under the same benchmark protocol.
+            </p>
+          </div>
+
+          <div class="table-wrap">
+            <table class="coverage-table">
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>Text</th>
+                  <th>Attr.</th>
+                  <th>Label</th>
+                  <th>Morph.</th>
+                  <th>Concept</th>
+                  <th>Adh.</th>
+                  <th>Fine-gr.</th>
+                  <th>Comp. Gen.</th>
+                  <th>Down. Util.</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="group-row"><th colspan="10">Existing Benchmark</th></tr>
+                <tr>
+                  <td>TSGBench</td>
+                  <td><span class="mark no">-</span></td>
+                  <td><span class="mark no">-</span></td>
+                  <td><span class="mark yes">✓</span></td>
+                  <td><span class="mark no">-</span></td>
+                  <td><span class="mark no">-</span></td>
+                  <td><span class="mark no">-</span></td>
+                  <td><span class="mark no">-</span></td>
+                  <td><span class="mark no">-</span></td>
+                  <td><span class="mark yes">✓</span></td>
+                </tr>
+                <tr class="group-row"><th colspan="10">Label-conditioned</th></tr>
+                <tr>
+                  <td>TimeVQVAE</td>
+                  <td><span class="mark no">-</span></td><td><span class="mark no">-</span></td><td><span class="mark yes">✓</span></td>
+                  <td><span class="mark no">-</span></td><td><span class="mark no">-</span></td><td><span class="mark no">-</span></td>
+                  <td><span class="mark no">-</span></td><td><span class="mark no">-</span></td><td><span class="mark yes">✓</span></td>
+                </tr>
+                <tr>
+                  <td>TTS-CGAN</td>
+                  <td><span class="mark no">-</span></td><td><span class="mark no">-</span></td><td><span class="mark yes">✓</span></td>
+                  <td><span class="mark no">-</span></td><td><span class="mark no">-</span></td><td><span class="mark no">-</span></td>
+                  <td><span class="mark no">-</span></td><td><span class="mark no">-</span></td><td><span class="mark yes">✓</span></td>
+                </tr>
+                <tr>
+                  <td>Diffusion-TS</td>
+                  <td><span class="mark no">-</span></td><td><span class="mark no">-</span></td><td><span class="mark yes">✓</span></td>
+                  <td><span class="mark no">-</span></td><td><span class="mark yes">✓</span></td><td><span class="mark no">-</span></td>
+                  <td><span class="mark no">-</span></td><td><span class="mark no">-</span></td><td><span class="mark yes">✓</span></td>
+                </tr>
+                <tr class="group-row"><th colspan="10">Attribute-conditioned</th></tr>
+                <tr>
+                  <td>TimeWeaver</td>
+                  <td><span class="mark no">-</span></td><td><span class="mark yes">✓</span></td><td><span class="mark no">-</span></td>
+                  <td><span class="mark no">-</span></td><td><span class="mark no">-</span></td><td><span class="mark yes">✓</span></td>
+                  <td><span class="mark no">-</span></td><td><span class="mark no">-</span></td><td><span class="mark yes">✓</span></td>
+                </tr>
+                <tr>
+                  <td>TEdit</td>
+                  <td><span class="mark no">-</span></td><td><span class="mark yes">✓</span></td><td><span class="mark no">-</span></td>
+                  <td><span class="mark no">-</span></td><td><span class="mark no">-</span></td><td><span class="mark yes">✓</span></td>
+                  <td><span class="mark no">-</span></td><td><span class="mark yes">✓</span></td><td><span class="mark no">-</span></td>
+                </tr>
+                <tr>
+                  <td>WaveStitch</td>
+                  <td><span class="mark no">-</span></td><td><span class="mark yes">✓</span></td><td><span class="mark no">-</span></td>
+                  <td><span class="mark no">-</span></td><td><span class="mark no">-</span></td><td><span class="mark no">-</span></td>
+                  <td><span class="mark no">-</span></td><td><span class="mark no">-</span></td><td><span class="mark no">-</span></td>
+                </tr>
+                <tr class="group-row"><th colspan="10">Text-conditioned</th></tr>
+                <tr>
+                  <td>Text2Motion</td>
+                  <td><span class="mark yes">✓</span></td><td><span class="mark no">-</span></td><td><span class="mark no">-</span></td>
+                  <td><span class="mark yes">✓</span></td><td><span class="mark no">-</span></td><td><span class="mark yes">✓</span></td>
+                  <td><span class="mark no">-</span></td><td><span class="mark no">-</span></td><td><span class="mark no">-</span></td>
+                </tr>
+                <tr>
+                  <td>DiffuSETS</td>
+                  <td><span class="mark yes">✓</span></td><td><span class="mark no">-</span></td><td><span class="mark no">-</span></td>
+                  <td><span class="mark no">-</span></td><td><span class="mark yes">✓</span></td><td><span class="mark no">-</span></td>
+                  <td><span class="mark no">-</span></td><td><span class="mark no">-</span></td><td><span class="mark no">-</span></td>
+                </tr>
+                <tr>
+                  <td>BRIDGE</td>
+                  <td><span class="mark yes">✓</span></td><td><span class="mark no">-</span></td><td><span class="mark no">-</span></td>
+                  <td><span class="mark no">-</span></td><td><span class="mark yes">✓</span></td><td><span class="mark yes">✓</span></td>
+                  <td><span class="mark no">-</span></td><td><span class="mark no">-</span></td><td><span class="mark yes">✓</span></td>
+                </tr>
+                <tr>
+                  <td>T2S</td>
+                  <td><span class="mark yes">✓</span></td><td><span class="mark no">-</span></td><td><span class="mark no">-</span></td>
+                  <td><span class="mark yes">✓</span></td><td><span class="mark no">-</span></td><td><span class="mark yes">✓</span></td>
+                  <td><span class="mark no">-</span></td><td><span class="mark no">-</span></td><td><span class="mark no">-</span></td>
+                </tr>
+                <tr>
+                  <td>VerbalTS</td>
+                  <td><span class="mark yes">✓</span></td><td><span class="mark yes">✓</span></td><td><span class="mark yes">✓</span></td>
+                  <td><span class="mark yes">✓</span></td><td><span class="mark no">-</span></td><td><span class="mark yes">✓</span></td>
+                  <td><span class="mark no">-</span></td><td><span class="mark no">-</span></td><td><span class="mark no">-</span></td>
+                </tr>
+                <tr class="ours-row">
+                  <td>ConTSG-Bench</td>
+                  <td><span class="mark yes">✓</span></td><td><span class="mark yes">✓</span></td><td><span class="mark yes">✓</span></td>
+                  <td><span class="mark yes">✓</span></td><td><span class="mark yes">✓</span></td><td><span class="mark yes">✓</span></td>
+                  <td><span class="mark yes">✓</span></td><td><span class="mark yes">✓</span></td><td><span class="mark yes">✓</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt" id="results">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Main Quantitative Results</p>
+            <h2>Fidelity and condition adherence expose different model strengths.</h2>
+            <p>
+              The main ranking separates marginal generation quality from conditional alignment. This prevents
+              realistic but mismatched samples from being counted as successful conditional generation.
+            </p>
+          </div>
+
+          <figure class="figure-frame">
+            <img src="assets/model_ranking.png" alt="Model ranking by generation fidelity and condition adherence" loading="lazy" />
+          </figure>
+
+          <div class="insight-grid">
+            <article class="insight">
+              <h3>Fidelity is not enough</h3>
+              <p>Models can generate plausible time series while failing to follow the requested condition.</p>
+            </article>
+            <article class="insight">
+              <h3>Text has the highest ceiling</h3>
+              <p>Text-conditioned models include the strongest results, while also showing the widest variance.</p>
+            </article>
+            <article class="insight">
+              <h3>Robustness varies by dataset</h3>
+              <p>Large cross-dataset error bars show that no current generator dominates every domain.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="analyses">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Behavior Analyses</p>
+            <h2>Additional analyses from the final paper.</h2>
+            <p>
+              These panels summarize the paper's deeper studies of semantic abstraction, fine-grained control,
+              compositional generalization, and downstream utility.
+            </p>
+          </div>
+
+          <div class="analysis-grid">
+            <article class="analysis-card">
+              <img src="assets/rq2_morph_concept.png" alt="Morphological versus conceptual condition comparison" loading="lazy" />
+              <div>
+                <h3>Morphological vs. conceptual conditions</h3>
+                <p>Condition semantics change generation difficulty in a dataset-dependent way.</p>
+              </div>
+            </article>
+            <article class="analysis-card">
+              <img src="assets/rq3_fine_grained.png" alt="Fine-grained control evaluation results" loading="lazy" />
+              <div>
+                <h3>Fine-grained local control</h3>
+                <p>Most generators struggle to preserve segment-level semantics on real-world dynamics.</p>
+              </div>
+            </article>
+            <article class="analysis-card">
+              <img src="assets/rq4_compositional.png" alt="Compositional generalization head and tail comparison" loading="lazy" />
+              <div>
+                <h3>Compositional generalization</h3>
+                <p>Novel attribute combinations remain difficult, especially for models that strongly follow conditions.</p>
+              </div>
+            </article>
+            <article class="analysis-card">
+              <img src="assets/rq5_drop_rate.png" alt="Drop Rate distribution for downstream utility" loading="lazy" />
+              <div>
+                <h3>Downstream utility</h3>
+                <p>Generated data can help classification, but utility is highly dependent on the dataset and model pair.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt" id="cases">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Qualitative Cases</p>
+            <h2>Side-by-side generated time series across benchmark domains.</h2>
+            <p>
+              The final paper visualizes ground-truth series against generated medians and quantile bands, revealing
+              variance calibration and temporal dynamics that aggregate metrics may obscure.
+            </p>
+          </div>
+
+          <div class="case-grid">
+            <figure class="case-card">
+              <img src="assets/case_synthu.png" alt="Synth-U generation quality comparison" loading="lazy" />
+              <figcaption>Synth-U</figcaption>
+            </figure>
+            <figure class="case-card">
+              <img src="assets/case_telecomts.png" alt="TelecomTS generation quality comparison" loading="lazy" />
+              <figcaption>TelecomTS</figcaption>
+            </figure>
+            <figure class="case-card">
+              <img src="assets/case_ettm1.png" alt="ETTm1 generation quality comparison" loading="lazy" />
+              <figcaption>ETTm1</figcaption>
+            </figure>
+            <figure class="case-card">
+              <img src="assets/case_airquality.png" alt="AirQuality Beijing generation quality comparison" loading="lazy" />
+              <figcaption>AirQuality Beijing</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="validation">
+        <div class="container two-column">
+          <div>
+            <p class="eyebrow">Metric Validation</p>
+            <h2>CTTP score differences align with visual preference judgments.</h2>
+            <p>
+              Pairwise validation compares CTTP score direction against an LLM-based visual preference evaluator. Larger
+              CTTP gaps produce stronger agreement, supporting CTTP as a meaningful condition-adherence signal.
+            </p>
+            <div class="table-wrap small">
+              <table class="compact-table">
+                <thead>
+                  <tr>
+                    <th>CTTP gap</th>
+                    <th>Agree / Total</th>
+                    <th>Agreement</th>
+                    <th>p-value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>|ΔCTTP| ≥ 0.5</td><td>208 / 360</td><td>57.8%</td><td>0.002</td></tr>
+                  <tr><td>|ΔCTTP| ≥ 1.0</td><td>165 / 273</td><td>60.4%</td><td>0.0003</td></tr>
+                  <tr><td>|ΔCTTP| ≥ 2.0</td><td>106 / 175</td><td>60.6%</td><td>0.003</td></tr>
+                  <tr><td>|ΔCTTP| ≥ 3.0</td><td>76 / 120</td><td>63.3%</td><td>0.002</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div>
+            <p class="eyebrow">Inference Efficiency</p>
+            <h2>Deployment cost differs sharply across model families.</h2>
+            <p>
+              Models are profiled on Synth-U using a single NVIDIA A40 GPU with 10 generated samples per condition.
+              Latency varies widely, and model size alone does not determine runtime.
+            </p>
+            <div class="table-wrap small">
+              <table class="compact-table">
+                <thead>
+                  <tr>
+                    <th>Model</th>
+                    <th>Params</th>
+                    <th>Latency</th>
+                    <th>VRAM</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>TTSCGAN</td><td>246.8K</td><td>0.03 ms</td><td>0.13 GB</td></tr>
+                  <tr><td>Text2Motion</td><td>32.9M</td><td>0.22 ms</td><td>0.20 GB</td></tr>
+                  <tr><td>TimeWeaver</td><td>326.5K</td><td>0.58 ms</td><td>0.24 GB</td></tr>
+                  <tr><td>VerbalTS</td><td>52.5M</td><td>5.43 ms</td><td>0.26 GB</td></tr>
+                  <tr><td>Bridge</td><td>22.1M</td><td>13.47 ms</td><td>1.87 GB</td></tr>
+                  <tr><td>Diffusion-TS</td><td>1.1M</td><td>55.92 ms</td><td>4.50 GB</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt" id="citation">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Citation</p>
+            <h2>Cite ConTSG-Bench</h2>
+          </div>
+          <pre><code>@inproceedings{lan2026contsgbench,
+  title     = {ConTSG-Bench: A Unified Benchmark for Conditional Time Series Generation},
+  author    = {Lan, Shaocheng and Gu, Shuqi and Xiong, Zhangzhi and Ren, Kan},
+  booktitle = {Proceedings of the 43rd International Conference on Machine Learning},
+  year      = {2026}
+}</code></pre>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>ConTSG-Bench</span>
+        <a href="#top">Back to top</a>
+      </div>
+    </footer>
+  </body>
+</html>
