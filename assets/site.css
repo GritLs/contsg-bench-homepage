@@ -289,8 +289,8 @@ figcaption {
 .caption-pipeline {
   width: 100%;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 42px minmax(0, 1fr) 34px minmax(0, 0.86fr);
-  gap: 8px;
+  grid-template-columns: minmax(0, 1fr) 58px minmax(0, 1fr) 36px minmax(0, 0.86fr);
+  gap: 12px;
   align-items: center;
 }
 
@@ -424,12 +424,14 @@ figcaption {
 .pipeline-arrow.labelled span {
   position: absolute;
   left: 50%;
-  bottom: 10px;
-  width: max-content;
+  bottom: 16px;
+  width: 58px;
   transform: translateX(-50%);
   color: #526471;
   font-size: 0.66rem;
   font-weight: 800;
+  line-height: 1.05;
+  text-align: center;
   text-transform: uppercase;
 }
 
